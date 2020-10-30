@@ -7,23 +7,30 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   isAuth = false;
-  toDoList = [
-    {
-      name: 'Finaliser les maquettes',
-      complete: false,
-      created: new Date('01/01/2021 09:05')
-    },
-    {
-      name: 'Intégrer le module de paiement',
-      complete: true,
-      created: new Date('01/02/2021 10:32')
-    },
-    {
-      name: 'Développer l\'authentification',
-      complete: false,
-      created: new Date('01/03/2021 12:55')
-    },
-  ];
+  toDoList = new Promise(
+    (resolve, reject) =>{
+      const data = [
+        {
+          name: 'Finaliser les maquettes',
+          complete: false,
+          created: new Date('01/01/2021 09:05')
+        },
+        {
+          name: 'Intégrer le module de paiement',
+          complete: true,
+          created: new Date('01/02/2021 10:32')
+        },
+        {
+          name: 'Développer l\'authentification',
+          complete: false,
+          created: new Date('01/03/2021 12:55')
+        },
+      ]
+      setTimeout(()=>{
+        resolve(data)
+      },1);
+    }
+  )
 
   constructor() {
     setTimeout(() => {

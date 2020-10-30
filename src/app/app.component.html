@@ -3,7 +3,7 @@
     <div class="col-12">
       <h1>To Do List</h1>
       <ul class="list-group">
-        <app-task *ngFor="let task of toDoList"
+        <app-task *ngFor="let task of toDoList | async"
             [taskName]="task.name"
             [taskComplete]="task.complete"
             [created]="task.created"></app-task>
