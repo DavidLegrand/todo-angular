@@ -12,4 +12,7 @@ export class AppComponent {
       this.isAuth = true
     },2000)
   }
+  onComplete(){
+    console.log("All tasks are completed !")
+  }
 }
