@@ -1,43 +1,30 @@
-import { Component } from '@angular/core';
+import { TodolistService } from './services/todolist.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   isAuth = false;
-  toDoList = new Promise(
-    (resolve, reject) =>{
-      const data = [
-        {
-          name: 'Finaliser les maquettes',
-          complete: false,
-          created: new Date('01/01/2021 09:05')
-        },
-        {
-          name: 'Intégrer le module de paiement',
-          complete: true,
-          created: new Date('01/02/2021 10:32')
-        },
-        {
-          name: 'Développer l\'authentification',
-          complete: false,
-          created: new Date('01/03/2021 12:55')
-        },
-      ]
-      setTimeout(()=>{
-        resolve(data)
-      },1);
-    }
-  )
+  toDoList: Promise<any>;
 
-  constructor() {
+  constructor(private tdlS: TodolistService) {
     setTimeout(() => {
       this.isAuth = true;
     }, 2000);
   }
+
+  ngOnInit() {
+    this.toDoList = this.tdlS.toDoList;
+  }
+
   onComplete() {
-    console.log('All tasks are completed !');
+    this.tdlS.completeAll()
+  }
+  
+  onUncomplete() {
+    this.tdlS.uncompleteAll()
   }
 }

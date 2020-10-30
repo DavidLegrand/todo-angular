@@ -1,4 +1,6 @@
+import { TodolistService } from './../../services/todolist.service';
 import { Component, Input, OnInit } from '@angular/core';
+import { Task } from '../../interfaces/task'
 
 @Component({
   selector: 'app-task',
@@ -6,16 +8,20 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./task.component.scss']
 })
 export class TaskComponent implements OnInit {
-  @Input() taskName : string
-  @Input() taskComplete : boolean
-  @Input() created : string
+  @Input() task : Task
   
-  constructor() { }
+  constructor(private tdlS: TodolistService) { }
 
   ngOnInit(): void {
   }
   
   getComplete(){
-    return this.taskComplete ? "Terminée" : "En cours"
+    return this.task.complete ? "Terminée" : "En cours"
+  }
+  onComplete(){
+    this.tdlS.complete(this.task.id)
+  }
+  onUncomplete(){
+    this.tdlS.uncomplete(this.task.id)
   }
 }
