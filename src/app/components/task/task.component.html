@@ -2,6 +2,14 @@
       'list-group-item-success':taskComplete,
       'list-group-item-warning':!taskComplete
     }">
-  <h4>Tâche : {{taskName}} -- {{ getComplete() }}</h4>
-  <button class="btn btn-dark" *ngIf="!taskComplete">Terminer</button>
+  <div class="row align-items-center">
+    <div class="col-10">
+      <h4>{{taskName}} -- {{ getComplete() }}</h4>
+      <p>Créée le {{created | date:'dd/MM/yy à hh:mm'}}</p>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-dark" *ngIf="!taskComplete">Terminer</button>
+    </div>
+  </div>
+
 </li>
