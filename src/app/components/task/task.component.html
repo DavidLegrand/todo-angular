@@ -1,4 +1,7 @@
-<li class="list-group-item">
+<li class="list-group-item list-group-item-action" [ngClass]="{
+      'list-group-item-success':taskComplete,
+      'list-group-item-warning':!taskComplete
+    }">
   <h4>Tâche : {{taskName}} -- {{ getComplete() }}</h4>
-  <input type="text" class="form-control" [(ngModel)]="taskName">
+  <button class="btn btn-dark" *ngIf="!taskComplete">Terminer</button>
 </li>

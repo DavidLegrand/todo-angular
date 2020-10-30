@@ -7,14 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   isAuth = false;
-  taskName1 = 'Finaliser les maquettes';
-  taskName2 = 'Intégrer le module de paiement';
-  taskName3 = "Développer l'authentification";
+  toDoList = [
+    {
+      name: 'Finaliser les maquettes',
+      complete: false,
+    },
+    {
+      name: 'Intégrer le module de paiement',
+      complete: true,
+    },
+    {
+      name: 'Développer l\'authentification',
+      complete: false,
+    },
+  ];
 
-  taskComplete1 = false
-  taskComplete2 = true
-  taskComplete3 = false
-  
   constructor() {
     setTimeout(() => {
       this.isAuth = true;

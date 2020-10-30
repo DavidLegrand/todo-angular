@@ -3,11 +3,11 @@
     <div class="col-12">
       <h1>To Do List</h1>
       <ul class="list-group">
-        <app-task [taskName]="taskName1" [taskComplete]="taskComplete1"></app-task>
-        <app-task [taskName]="taskName2" [taskComplete]="taskComplete2"></app-task>
-        <app-task [taskName]="taskName3" [taskComplete]="taskComplete3"></app-task>
+        <app-task *ngFor="let task of toDoList"
+            [taskName]="task.name"
+            [taskComplete]="task.complete"></app-task>
       </ul>
-      <button class="btn btn-success"
+      <button class="btn btn-dark"
           [disabled]="!isAuth"
           (click)="onComplete()">Terminer</button>
     </div>
