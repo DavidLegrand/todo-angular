@@ -1,12 +1,8 @@
+<app-nav></app-nav>
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h1 class="text-center display-4">To Do List</h1>
-      <ul class="list-group my-5">
-        <app-task *ngFor="let task of toDoList | async;" [task]="task"></app-task>
-      </ul>
-      <button class="btn btn-dark" [disabled]="!isAuth" (click)="onComplete()">Tout terminer</button>
-      <button class="btn btn-danger" [disabled]="!isAuth" (click)="onUncomplete()">Tout annuler</button>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

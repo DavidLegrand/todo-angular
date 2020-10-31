@@ -1,0 +1,9 @@
+<h1 class="text-center display-4">{{task.name}}</h1>
+<table class="table">
+  <tbody>
+    <tr><th scope="row">Id</th><td>{{task.id}}</td></tr>
+    <tr><th scope="row">Status</th><td>{{task.complete ? "Terminée" : "En cours"}}</td></tr>
+    <tr><th scope="row">Créée le</th><td>{{task.created| date:'dd/MM/yy à hh:mm'}}</td></tr>
+  </tbody>
+</table>
+<p><a routerLink="/todolist">Retour à la liste</a></p>

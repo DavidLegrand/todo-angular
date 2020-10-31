@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../interfaces/task';
+import { Task } from '../interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -53,5 +53,8 @@ export class TodolistService {
         task.complete = false;
       }
     });
+  }
+  async getTaskById(id: number) {
+    return (await this.toDoList).find((task) => task.id === id);
   }
 }

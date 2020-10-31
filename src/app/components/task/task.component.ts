@@ -1,6 +1,6 @@
 import { TodolistService } from './../../services/todolist.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { Task } from '../../interfaces/task'
+import { Task } from '../../interfaces'
 
 @Component({
   selector: 'app-task',
