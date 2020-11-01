@@ -61,4 +61,19 @@ export class TodolistService {
   getTaskById(id: number) {
     return this.toDoList.find((task) => task.id === id);
   }
+  addTask(newTask: Task) {
+    const task : Task = {
+      id: this.getLastId() + 1,
+      name: newTask.name,
+      complete: newTask.complete,
+      created: new Date()
+    };
+    this.toDoList.push(task)
+    this.emitToDoListSubject()
+  }
+  getLastId(): number {
+    return this.toDoList.reduce((prev, curr) =>
+      prev.id < curr.id ? prev : curr
+    ).id;
+  }
 }

@@ -11,9 +11,11 @@ import { TodolistComponent } from './components/todolist/todolist.component';
 import { NavComponent } from './components/nav/nav.component';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { TaskFormComponent } from './components/task-form/task-form.component';
 
 const appRoutes: Routes = [
   { path: 'todolist', component: TodolistComponent, canActivate:[AuthGuard]},
+  { path: 'todolist/new', component: TaskFormComponent, canActivate:[AuthGuard]},
   { path: 'todolist/:id', component: TaskDetailsComponent, canActivate:[AuthGuard]},
   { path: 'login', component: LoginComponent },
   { path: '', component: TodolistComponent, canActivate:[AuthGuard]},
@@ -30,6 +32,7 @@ const appRoutes: Routes = [
     NavComponent,
     TaskDetailsComponent,
     NotFoundComponent,
+    TaskFormComponent,
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
   providers: [],

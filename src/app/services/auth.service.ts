@@ -11,7 +11,7 @@ export class AuthService {
       setTimeout(()=>{
         this.isAuth = true
         resolve()
-      }, 1000)
+      }, 1)
     })
   }
 
