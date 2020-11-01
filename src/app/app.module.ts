@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   { path: 'todolist', component: TodolistComponent, canActivate:[AuthGuard]},
   { path: 'todolist/:id', component: TaskDetailsComponent, canActivate:[AuthGuard]},
   { path: 'login', component: LoginComponent },
-  { path: '', component: TodolistComponent },
+  { path: '', component: TodolistComponent, canActivate:[AuthGuard]},
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' },
 ];

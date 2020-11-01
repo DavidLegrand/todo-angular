@@ -1,6 +1,8 @@
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { TodolistService } from 'src/app/services/todolist.service';
+import { Subscription } from 'rxjs';
+import { Task } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-todolist',
@@ -9,15 +11,18 @@ import { TodolistService } from 'src/app/services/todolist.service';
 })
 export class TodolistComponent implements OnInit {
   isAuth : boolean;
-  toDoList: Promise<any>;
-
+  toDoList: Task[];
+  toDoListSubscription: Subscription
   constructor(private tdlS: TodolistService, private auth: AuthService) {
 
   }
 
   ngOnInit() {
     this.isAuth = this.auth.isAuth
-    this.toDoList = this.tdlS.toDoList;
+    this.toDoListSubscription = this.tdlS.toDoListSubject.subscribe((toDoList: Task[])=>{
+      this.toDoList = toDoList;
+    })
+    this.tdlS.emitToDoListSubject()
   }
 
   onComplete() {
