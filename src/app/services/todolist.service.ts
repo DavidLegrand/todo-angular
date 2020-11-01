@@ -61,11 +61,11 @@ export class TodolistService {
   getTaskById(id: number) {
     return this.toDoList.find((task) => task.id === id);
   }
-  addTask(newTask: Task) {
+  addTask(newTask) {
     const task : Task = {
       id: this.getLastId() + 1,
       name: newTask.name,
-      complete: newTask.complete,
+      complete: Boolean(JSON.parse(newTask.complete)),
       created: new Date()
     };
     this.toDoList.push(task)
