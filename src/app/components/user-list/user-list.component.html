@@ -1,0 +1,13 @@
+<h1 class="text-center display-4">Utilisateurs</h1>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let user of users">
+    <h2>{{user.firstName}} {{user.lastName}}</h2>
+    <p><a [href]="'mailto:'+user.email">{{user.email}}</a></p>
+    <p>{{user.team}}</p>
+    <div *ngIf="user.skills && user.skills.length > 0"><h3>Compétences :</h3>
+      <ul>
+        <li *ngFor="let skill of user.skills">{{skill}}</li>
+      </ul>
+    </div>
+  </li>
+</ul>
