@@ -54,7 +54,7 @@ export class TodolistService {
       }
     });
   }
-  async getTaskById(id: number) {
+  async getTaskById(id: number) : Promise<Task> {
     return (await this.toDoList).find((task) => task.id === id);
   }
 }

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  isAuth = false;
+  isAuth : boolean = false;
 
   login(){
     return new Promise((resolve, reject) => {
