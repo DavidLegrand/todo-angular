@@ -30,18 +30,21 @@ export class UserFormComponent implements OnInit {
   }
 
   onSubmit() {
-    const newUser = new User(
-      this.userForm.value['firstName'],
-      this.userForm.value['lastName'],
-      this.userForm.value['email'],
-      this.userForm.value['team'],
-      this.userForm.value['skills']
-    );
-    this.us.addUser(newUser);
-    this.router.navigate(['/users']);
+    if (this.userForm.valid) {
+      const newUser = new User(
+        this.userForm.value['firstName'],
+        this.userForm.value['lastName'],
+        this.userForm.value['email'],
+        this.userForm.value['team'],
+        this.userForm.value['skills']
+      );
+      this.us.addUser(newUser);
+      this.router.navigate(['/users']);
+    }
   }
 
-  getSkills() {
+  getSkills() : FormArray {
+   
     return this.userForm.get('skills') as FormArray;
   }
 
