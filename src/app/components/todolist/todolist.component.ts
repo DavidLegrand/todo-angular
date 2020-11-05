@@ -1,5 +1,5 @@
 import { AuthService } from './../../services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TodolistService } from 'src/app/services/todolist.service';
 import { Subscription } from 'rxjs';
 import { Task } from 'src/app/interfaces';
@@ -9,7 +9,7 @@ import { Task } from 'src/app/interfaces';
   templateUrl: './todolist.component.html',
   styleUrls: ['./todolist.component.scss'],
 })
-export class TodolistComponent implements OnInit {
+export class TodolistComponent implements OnInit, OnDestroy {
   isAuth : boolean;
   toDoList: Task[];
   toDoListSubscription: Subscription
@@ -22,9 +22,13 @@ export class TodolistComponent implements OnInit {
     this.toDoListSubscription = this.tdlS.toDoListSubject.subscribe((toDoList: Task[])=>{
       this.toDoList = toDoList;
     })
-    this.tdlS.emitToDoListSubject()
+    this.tdlS.load()
   }
 
+  ngOnDestroy(){
+    this.toDoListSubscription.unsubscribe()
+  }
+  
   onComplete() {
     this.tdlS.completeAll();
   }
