@@ -1,7 +1,7 @@
 import { AuthGuard } from './guards/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -40,7 +40,7 @@ const appRoutes: Routes = [
     UserListComponent,
     UserFormComponent,
   ],
-  imports: [BrowserModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes)],
   providers: [],
   bootstrap: [AppComponent],
 })
